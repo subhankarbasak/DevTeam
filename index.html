@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Javascript Application By Aditya | Gourab | Subhankar</title>
+    <meta name="description" content="Our First Javascript Login and Registration Application">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+    <!-- External Js linked -->
+    <script defer src=""></script> <!-- defer is used to tell the browser that load parallel -->
+</head>
+
+<body>
+    <h1 id="heading" mycutomattribute='sibu'>Hello World!!</h1>
+
+    <!-- <input id="input" type="text">
+	<button onclick="save();">Save</button> -->
+
+    <!-- <button onclick="count();">+ Add</button>
+
+    <img id="light" class="off-light" onclick="lightOnOff();" src="./images/pic_bulboff.gif"
+        alt="" /> -->
+
+
+    <!-- signup form -->
+    <div class="SignUpForm">
+        <form action="" method="post" id="signup-form" onsubmit="prevent(event)" name="SignUpForm">
+            <div class="form-group">
+                <label for="Name">Name</label>
+                <input id="name" name="name" type="text" required>
+            </div><br>
+
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input id="email" name="email" type="email" required>
+            </div><br>
+
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input id="password" name="password" type="password" required>
+            </div>
+            <hr>
+            <button id="btn" type="submit" class="btn" onclick="saveForm()">Sign up</button>
+            <button id="re-btn" class="btn" onclick="redirect()">Sign In Page</button>
+        </form>
+    </div>
+    <!-- ./SignUp Form -->
+
+    <!-- SignIn Form -->
+    <div class="SignInForm">
+        <form action="" method="post" id="signin-form" onsubmit="prevent(event)" name="SignInForm">
+
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input id="signInEmail" name="signinemail" type="email" required>
+            </div><br>
+
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input id="signInPassword" name="signinpassword" type="password" required>
+            </div>
+            <button id="sign-in" type="submit" class="btn" onclick="signIn()">Sign In</button>
+        </form>
+    </div>
+    <!-- ./SignIn Form -->
+
+
+    <!-- Login Dashboard -->
+    <div class="loggedDashboard">
+        <div id="dashboard">
+            <h1>welcome to our page</h1>
+            <button id="sign-out" onclick="signOut()">sign out</button>
+        </div>
+    </div>
+    <!-- ./Login Dashboard -->
+
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
