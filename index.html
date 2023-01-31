@@ -10,129 +10,135 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Javascript Application By Aditya | Gourab | Subhankar</title>
-    <meta name="description" content="Our First Javascript Login and Registration Application">
-    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Javascript Application By Aditya | Gourab | Subhankar</title>
+  <meta name="description" content="Our First Javascript Login and Registration Application">
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./style.css">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
-    <!-- External Js linked -->
-    <script defer src=""></script> <!-- defer is used to tell the browser that load parallel -->
+  <!-- External Js linked -->
+  <script defer src=""></script> <!-- defer is used to tell the browser that load parallel -->
 </head>
 
 <body>
-    <!-- <h1 id="heading" mycutomattribute='sibu'>Hello World!!</h1> -->
+  <!-- <h1 id="heading" mycutomattribute='sibu'>Hello World!!</h1> -->
 
-    <!-- <input id="input" type="text">
+  <!-- <input id="input" type="text">
 	<button onclick="save();">Save</button> -->
 
-    <!-- <button onclick="count();">+ Add</button>
+  <!-- <button onclick="count();">+ Add</button>
     <img id="light" class="off-light" onclick="lightOnOff();" src="./images/pic_bulboff.gif"
         alt="" /> -->
 
 
-    <!-- signup form -->
-    <div id="signup-form" class="SignUpForm container h-100 w-25 border border-1 rounded-3 m-auto mt-4 p-3">
-        <form action="" method="post"  onsubmit="prevent(event)" name="SignUpForm">
-            <div class="form-group">
-                <label for="Name">Name:</label>
-                <input id="name" name="name" class="form-control" type="text" required>
-            </div><br>
+  <!-- signup form -->
+  <div id="signup-form" class="SignUpForm container h-100 w-25 border border-1 rounded-3 m-auto mt-4 p-3">
+    <form action="" method="post" onsubmit="prevent(event)" name="SignUpForm">
+      <div class="form-group">
+        <label for="Name">Name:</label>
+        <input id="name" name="name" class="form-control" type="text" required>
+      </div><br>
 
-            <div class="form-group">
-                <label for="Email">Email:</label>
-                <input id="email" name="email" type="email" class="form-control" required>
-            </div><br>
+      <div class="form-group">
+        <label for="Email">Email:</label>
+        <input id="email" name="email" type="email" class="form-control" required>
+      </div><br>
 
-            <div class="form-group">
-                <label for="Password">Password:</label>
-                <input id="password" name="password" class="form-control" type="password" required>
-            </div>
-            <hr>
-            <div class="">
-                <button id="btn" type="submit" class="btn btn-info rounded-2 text-center" onclick="saveForm()">Sign up</button>
-            <button id="re-btn" class="btn btn-danger rounded-2 text-center" onclick="redirect()">Sign In Page</button>
-       
-            </div>
-             </form>
-    </div>
-    <!-- ./SignUp Form -->
+      <div class="form-group">
+        <label for="Password">Password:</label>
+        <input id="password" name="password" class="form-control" type="password" required>
+      </div>
+      <hr>
+      <div class="">
+        <button id="btn" type="submit" class="btn btn-info rounded-2 text-center" onclick="saveForm()">Sign up</button>
+        <button id="re-btn" class="btn btn-danger rounded-2 text-center" onclick="redirect()">Sign In Page</button>
 
-    <!-- SignIn Form -->
-    <div class="SignInForm container h-100 w-25 border border-1 rounded-3 m-auto p-3" id="signin-form">
-        <form action="" method="post"  onsubmit="prevent(event)" name="SignInForm">
+      </div>
+    </form>
+  </div>
+  <!-- ./SignUp Form -->
 
-            <div class="form-group">
-                <label for="Email">Email</label>
-                <input id="signInEmail" name="signinemail" class="form-control" type="email" required>
-            </div><br>
+  <!-- SignIn Form -->
+  <div class="SignInForm container h-100 w-25 border border-1 rounded-3 m-auto p-3" id="signin-form">
+    <form action="" method="post" onsubmit="prevent(event)" name="SignInForm">
 
-            <div class="form-group">
-                <label for="Password">Password</label>
-                <input id="signInPassword" name="signinpassword" class="form-control" type="password" required>
-            </div>
-            <button id="sign-in" type="submit" class="btn btn-info mt-2" onclick="signIn()">Sign In</button>
-        </form>
-    </div>
-    <!-- ./SignIn Form -->
+      <div class="form-group">
+        <label for="Email">Email</label>
+        <input id="signInEmail" name="signinemail" class="form-control" type="email" required>
+      </div><br>
+
+      <div class="form-group">
+        <label for="Password">Password</label>
+        <input id="signInPassword" name="signinpassword" class="form-control" type="password" required>
+      </div>
+      <button id="sign-in" type="submit" class="btn btn-info mt-2" onclick="signIn()">Sign In</button>
+    </form>
+  </div>
+  <!-- ./SignIn Form -->
 
 
-    <!-- Login Dashboard -->
-    <div id="dashboard">
+  <!-- Login Dashboard -->
+  <div id="dashboard">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-             
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-              </li>
-              <li class="nav-item bg-danger" onclick="signOut()"><a class="nav-link" href="#">Logout</a></li>
-            </ul>
-            <div class="d-flex">
-                <input class="form-control me-1" type="file" id="image-upload">
-                <button class="btn btn-outline-success" onclick="imageSaver()">Upload</button>
-            </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li>
+            <li class="nav-item bg-danger" onclick="signOut()"><a class="nav-link" href="#">Logout</a></li>
+          </ul>
+          <div class="d-flex">
+            <input class="form-control me-1" type="file" id="image-upload">
+            <button class="btn btn-outline-success" onclick="imageSaver()">Upload</button>
           </div>
         </div>
-      </nav>
- 
-
-      <!-- card viewer -->
-      <div class="row" id="all-images">
-          
       </div>
-      
-     
+    </nav>
+
+
+    <!-- card viewer -->
+    <div class="row" id="all-images">
+
     </div>
-    <!-- ./Login Dashboard -->
 
 
-    <script src="./js/script.js"></script>
+  </div>
+  <!-- ./Login Dashboard -->
+
+
+  <script src="./js/script.js"></script>
+  <script src="./js/components.js"></script>
 </body>
 
 </html>

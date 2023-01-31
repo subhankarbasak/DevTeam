@@ -65,37 +65,37 @@ function saveForm() {
 	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 	let users = [];
-	if(name.trim()=="" || email.trim()=="" || password.trim()=="") {
+	if (name.trim() == "" || email.trim() == "" || password.trim() == "") {
 		alert("something is wrong");
 	}
-	else if(!email.match(mailformat)){
+	else if (!email.match(mailformat)) {
 		alert('Invalid email');
 	}
-	else if(password.trim().length<8){
+	else if (password.trim().length < 8) {
 		alert('password is too short');
 	}
-	else{
-	let user = { name: name, email: email, password: password };
-	if (localStorage.getItem("users") == null) {
-		users.push(user);
-	} else {
-		let userExist=0;
-		users = JSON.parse(localStorage.getItem("users"));
-		for (let i = 0; i < users.length; i++) {
-			if (users[i].email == email) {
-				alert("user already exist");
-				userExist=1;
+	else {
+		let user = { name: name, email: email, password: password };
+		if (localStorage.getItem("users") == null) {
+			users.push(user);
+		} else {
+			let userExist = 0;
+			users = JSON.parse(localStorage.getItem("users"));
+			for (let i = 0; i < users.length; i++) {
+				if (users[i].email == email) {
+					alert("user already exist");
+					userExist = 1;
+				}
+			}
+			if (userExist == 0) {
+				users.push(user);
 			}
 		}
-		if(userExist==0){
-		users.push(user);
-		}
-	}
-	let json = JSON.stringify(users);
+		let json = JSON.stringify(users);
 
-	// sessionStorage.setItem("user",json);
-	localStorage.setItem("users", json);
-}
+		// sessionStorage.setItem("user",json);
+		localStorage.setItem("users", json);
+	}
 }
 
 //Function for redirect to another page without refresh Page or concept used: hide page  
@@ -125,7 +125,7 @@ function signIn() {
 	for (let i = 0; i < lsUser.length; i++) {
 		if (lsUser[i].email == email && lsUser[i].password == password) {
 			isValid = 1;
-			index=i;
+			index = i;
 			break;
 		}
 
@@ -136,7 +136,7 @@ function signIn() {
 	else {
 		document.getElementById("dashboard").style.display = "block";
 		document.getElementById("signin-form").style.display = "none";
-		
+
 		let currentUser = { email: email, password: password };
 		let json = JSON.stringify(currentUser);
 		sessionStorage.setItem("currentUser", json);
@@ -158,50 +158,74 @@ if (sessionStorage.getItem("currentUser") != null) {
 	document.getElementById("signin-form").style.display = "none";
 	document.getElementById("signup-form").style.display = "none";
 }
-let url="";
-let upload=document.getElementById('image-upload')
+//let url = "";
+let upload = document.getElementById('image-upload');
 upload.addEventListener('change', () => {
-    const fr = new FileReader();
-    fr.readAsDataURL(upload.files[0]);
-    fr.addEventListener('load', () => {
-        url = fr.result;
-    });
+	const fr = new FileReader();
+	fr.readAsDataURL(upload.files[0]);
+	fr.addEventListener('load', () => {
+		let url = fr.result; //url = fr.result;
+		// saveImage(url); // not needed for Upload button click
+		// showImage(); //not needed for Upload button click
+		imageSaver(url);
+	});
 });
 
-function imageSaver(){
-	if(url==""){
+// function saveImage(url) {
+// 	//
+// 	let images = [];
+// 	let currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+// 	let email = currentUser.email;
+// 	if (localStorage.getItem(email) !== null) {
+// 		images = JSON.parse(localStorage.getItem(email));
+// 		images.push(url);
+// 	} else {
+// 		images.push(url);
+// 	}
+// 	localStorage.setItem(email, JSON.stringify(images));
+// }
+
+function imageSaver(url) {
+	if (url == "") {
 		alert('image uploading error');
 	}
-	else{
-		let images=[];
-		let currentUser=JSON.parse(sessionStorage.getItem('currentUser'));
-		let email=currentUser.email;
-		if(localStorage.getItem(email)!==null){
-			images=JSON.parse(localStorage.getItem(email));
+	else {
+		let images = [];
+		let currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+		let email = currentUser.email;
+		if (localStorage.getItem(email) !== null) {
+			images = JSON.parse(localStorage.getItem(email));
 			images.push(url);
-		}else{
+		} else {
 			images.push(url);
 		}
-		localStorage.setItem(email,JSON.stringify(images));
+		localStorage.setItem(email, JSON.stringify(images));
 		showImage();
 	}
 }
 
-function showImage(){
-	let html="";
-	let currentUser=JSON.parse(sessionStorage.getItem('currentUser'));
-	let email=currentUser.email;
-	let images=JSON.parse(localStorage.getItem(email));
-	for(let i=0;i<images.length;i++){
-	html+=`<div class="col-lg-3">
-	<div class="card w-100 h-100">
-	  <div class="card-body text-center">
-		<h5 class="card-title">Special title treatment</h5>
-		<img src=${images[i]} alt="" class="image">
-	  </div>
-	</div>
-  </div>`;
+function showImage() {
+	let html = "";
+	let currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+	let email = currentUser.email;
+	let images = JSON.parse(localStorage.getItem(email));
+	for (let i = 0; i < images.length; i++) {
+		html += `<show-image imgSrc = ${images[i]} index = ${i}></show-image>`;
 	}
-	document.getElementById('all-images').innerHTML=html;
+	document.getElementById('all-images').innerHTML = html;
 }
 showImage();
+
+
+function deleteImage(index) {
+	// Here we will learn how to Delete Image by Javascript
+	let currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+	let email = currentUser.email;
+	let images = JSON.parse(localStorage.getItem(email));
+	images.splice(index, 1); // if we place here 2 instad of 1 then 2 images will be delete consecutive. images.splice(index, 1, 'new_image_url_here');
+	localStorage.setItem(email, JSON.stringify(images));
+	showImage();
+	console.log(index);
+
+
+}
