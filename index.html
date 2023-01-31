@@ -1,5 +1,3 @@
-
-
 <!--
  * Topic : Learning Javascript From Scrach 
  * Created By Aditya Mandal, Gourab Gupta, Subhankar Basak
@@ -18,71 +16,118 @@
     <meta name="description" content="Our First Javascript Login and Registration Application">
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
     <!-- External Js linked -->
     <script defer src=""></script> <!-- defer is used to tell the browser that load parallel -->
 </head>
 
 <body>
-    <h1 id="heading" mycutomattribute='sibu'>Hello World!!</h1>
+    <!-- <h1 id="heading" mycutomattribute='sibu'>Hello World!!</h1> -->
 
     <!-- <input id="input" type="text">
 	<button onclick="save();">Save</button> -->
 
     <!-- <button onclick="count();">+ Add</button>
-
     <img id="light" class="off-light" onclick="lightOnOff();" src="./images/pic_bulboff.gif"
         alt="" /> -->
 
 
     <!-- signup form -->
-    <div class="SignUpForm">
-        <form action="" method="post" id="signup-form" onsubmit="prevent(event)" name="SignUpForm">
+    <div id="signup-form" class="SignUpForm container h-100 w-25 border border-1 rounded-3 m-auto mt-4 p-3">
+        <form action="" method="post"  onsubmit="prevent(event)" name="SignUpForm">
             <div class="form-group">
-                <label for="Name">Name</label>
-                <input id="name" name="name" type="text" required>
+                <label for="Name">Name:</label>
+                <input id="name" name="name" class="form-control" type="text" required>
             </div><br>
 
             <div class="form-group">
-                <label for="Email">Email</label>
-                <input id="email" name="email" type="email" required>
+                <label for="Email">Email:</label>
+                <input id="email" name="email" type="email" class="form-control" required>
             </div><br>
 
             <div class="form-group">
-                <label for="Password">Password</label>
-                <input id="password" name="password" type="password" required>
+                <label for="Password">Password:</label>
+                <input id="password" name="password" class="form-control" type="password" required>
             </div>
             <hr>
-            <button id="btn" type="submit" class="btn" onclick="saveForm()">Sign up</button>
-            <button id="re-btn" class="btn" onclick="redirect()">Sign In Page</button>
-        </form>
+            <div class="">
+                <button id="btn" type="submit" class="btn btn-info rounded-2 text-center" onclick="saveForm()">Sign up</button>
+            <button id="re-btn" class="btn btn-danger rounded-2 text-center" onclick="redirect()">Sign In Page</button>
+       
+            </div>
+             </form>
     </div>
     <!-- ./SignUp Form -->
 
     <!-- SignIn Form -->
-    <div class="SignInForm">
-        <form action="" method="post" id="signin-form" onsubmit="prevent(event)" name="SignInForm">
+    <div class="SignInForm container h-100 w-25 border border-1 rounded-3 m-auto p-3" id="signin-form">
+        <form action="" method="post"  onsubmit="prevent(event)" name="SignInForm">
 
             <div class="form-group">
                 <label for="Email">Email</label>
-                <input id="signInEmail" name="signinemail" type="email" required>
+                <input id="signInEmail" name="signinemail" class="form-control" type="email" required>
             </div><br>
 
             <div class="form-group">
                 <label for="Password">Password</label>
-                <input id="signInPassword" name="signinpassword" type="password" required>
+                <input id="signInPassword" name="signinpassword" class="form-control" type="password" required>
             </div>
-            <button id="sign-in" type="submit" class="btn" onclick="signIn()">Sign In</button>
+            <button id="sign-in" type="submit" class="btn btn-info mt-2" onclick="signIn()">Sign In</button>
         </form>
     </div>
     <!-- ./SignIn Form -->
 
 
     <!-- Login Dashboard -->
-    <div class="loggedDashboard">
-        <div id="dashboard">
-            <h1>welcome to our page</h1>
-            <button id="sign-out" onclick="signOut()">sign out</button>
+    <div id="dashboard">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+             
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+              </li>
+              <li class="nav-item bg-danger" onclick="signOut()"><a class="nav-link" href="#">Logout</a></li>
+            </ul>
+            <div class="d-flex">
+                <input class="form-control me-1" type="file" id="image-upload">
+                <button class="btn btn-outline-success" onclick="imageSaver()">Upload</button>
+            </div>
+          </div>
         </div>
+      </nav>
+ 
+
+      <!-- card viewer -->
+      <div class="row" id="all-images">
+          
+      </div>
+      
+     
     </div>
     <!-- ./Login Dashboard -->
 

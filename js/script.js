@@ -62,23 +62,40 @@ function saveForm() {
 	let name = document.getElementById("name").value;
 	let email = document.getElementById("email").value;
 	let password = document.getElementById("password").value;
+	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
 	let users = [];
+	if(name.trim()=="" || email.trim()=="" || password.trim()=="") {
+		alert("something is wrong");
+	}
+	else if(!email.match(mailformat)){
+		alert('Invalid email');
+	}
+	else if(password.trim().length<8){
+		alert('password is too short');
+	}
+	else{
 	let user = { name: name, email: email, password: password };
 	if (localStorage.getItem("users") == null) {
 		users.push(user);
 	} else {
+		let userExist=0;
 		users = JSON.parse(localStorage.getItem("users"));
 		for (let i = 0; i < users.length; i++) {
 			if (users[i].email == email) {
 				alert("user already exist");
+				userExist=1;
 			}
 		}
+		if(userExist==0){
 		users.push(user);
+		}
 	}
 	let json = JSON.stringify(users);
 
 	// sessionStorage.setItem("user",json);
 	localStorage.setItem("users", json);
+}
 }
 
 //Function for redirect to another page without refresh Page or concept used: hide page  
@@ -104,11 +121,14 @@ function signIn() {
 	let lsUser = JSON.parse(users);
 	// console.log(lsUser);
 	let isValid = 0;
+	let index;
 	for (let i = 0; i < lsUser.length; i++) {
 		if (lsUser[i].email == email && lsUser[i].password == password) {
 			isValid = 1;
+			index=i;
 			break;
 		}
+
 	}
 	if (isValid == 0) {
 		alert("Wrong Email or Password!!!!");
@@ -116,10 +136,11 @@ function signIn() {
 	else {
 		document.getElementById("dashboard").style.display = "block";
 		document.getElementById("signin-form").style.display = "none";
-
+		
 		let currentUser = { email: email, password: password };
 		let json = JSON.stringify(currentUser);
 		sessionStorage.setItem("currentUser", json);
+		showImage();
 	}
 }
 
@@ -137,3 +158,50 @@ if (sessionStorage.getItem("currentUser") != null) {
 	document.getElementById("signin-form").style.display = "none";
 	document.getElementById("signup-form").style.display = "none";
 }
+let url="";
+let upload=document.getElementById('image-upload')
+upload.addEventListener('change', () => {
+    const fr = new FileReader();
+    fr.readAsDataURL(upload.files[0]);
+    fr.addEventListener('load', () => {
+        url = fr.result;
+    });
+});
+
+function imageSaver(){
+	if(url==""){
+		alert('image uploading error');
+	}
+	else{
+		let images=[];
+		let currentUser=JSON.parse(sessionStorage.getItem('currentUser'));
+		let email=currentUser.email;
+		if(localStorage.getItem(email)!==null){
+			images=JSON.parse(localStorage.getItem(email));
+			images.push(url);
+		}else{
+			images.push(url);
+		}
+		localStorage.setItem(email,JSON.stringify(images));
+		showImage();
+	}
+}
+
+function showImage(){
+	let html="";
+	let currentUser=JSON.parse(sessionStorage.getItem('currentUser'));
+	let email=currentUser.email;
+	let images=JSON.parse(localStorage.getItem(email));
+	for(let i=0;i<images.length;i++){
+	html+=`<div class="col-lg-3">
+	<div class="card w-100 h-100">
+	  <div class="card-body text-center">
+		<h5 class="card-title">Special title treatment</h5>
+		<img src=${images[i]} alt="" class="image">
+	  </div>
+	</div>
+  </div>`;
+	}
+	document.getElementById('all-images').innerHTML=html;
+}
+showImage();
