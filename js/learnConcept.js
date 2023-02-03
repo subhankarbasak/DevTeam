@@ -55,21 +55,28 @@
 
 //bind method
 
-function getEmail() {
-    return this.firstName + "." + this.lastName + "@test.com";
-}
+// function getEmail() {
+//     return this.firstName + "." + this.lastName + "@test.com";
+// }
 
-let student = {
-    "firstName": "sibu",
-    "lastName": "basak",
-    "age": 24,
+// let student = {
+//     "firstName": "sibu",
+//     "lastName": "basak",
+//     "age": 24,
 
-}
+// }
 
-let teacher = {
-    "firstName": "Subhankar",
-    "lastName": "basak",
-    "age": 24,
-}
-let email = getEmail.bind(student);
-console.log(email());
+// let teacher = {
+//     "firstName": "Subhankar",
+//     "lastName": "basak",
+//     "age": 24,
+// }
+// let email = getEmail.bind(student);
+// console.log(email());
+
+
+// #########################
+// Function Chaining
+//############################
+let s = "  qwerty   ";
+console.log(s.trim().concat('x').length);
