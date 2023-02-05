@@ -38,6 +38,99 @@
             if (e.target.classList.contains('edit')) console.log(e.target.parentElement.id + ' edit is clicked');
         }
     </script>
+
+    <script>
+
+
+        // problem statement: how to run xyz function after yab function excuted completely
+
+        // let student = [
+        //     { 'name': 'sibu', 'age': 23, 'year': 2023 },
+        //     { 'name': 'shib', 'age': 27, 'year': 2023 }
+        // ]
+
+        // function xyz() {
+        //     setTimeout(() => {
+        //         console.log(student)
+        //     }, 2000);
+        // }
+
+        // function yab(newData) {
+        //     setTimeout(() => {
+        //         student.push(newData);
+        //     }, 3000)
+        // }
+
+
+
+        // push new object on existing array object callback function
+
+        //         let student = [
+        //     { 'name': 'sibu', 'age': 23, 'year': 2023 },
+        //     { 'name': 'shib', 'age': 27, 'year': 2023 }
+        // ]
+
+        // function xyz() {
+        //     setTimeout(() => {
+        //         console.log(student)
+        //     }, 2000);
+        // }
+
+        // function yab(newData, callback) {
+        //     setTimeout(() => {
+        //         student.push(newData);
+        //         callback();
+        //     }, 5000)
+        // }
+
+        // yab({ 'name': 'aditya', 'age': 26, 'year': 2023 }, xyz);
+
+
+        // learned Promise in javascript
+
+
+        // let student = [
+        //     { 'name': 'sibu', 'age': 23, 'year': 2023 },
+        //     { 'name': 'shib', 'age': 27, 'year': 2023 }
+        // ]
+
+        // function xyz() {
+        //     setTimeout(() => {
+        //         console.log(student)
+        //     }, 2000);
+        // }
+
+        // function yab(newData) {
+        //     return new Promise((res, rej) => {
+        //         setTimeout(() => {
+        //             student.push(newData);
+        //             let error = true;
+        //             if (!error) res();
+        //             else rej();
+        //         }, 3000);
+        //     });
+        // }
+        // function issues() {
+        //     console.log("big issue is there!")
+        // }
+
+        // yab({ 'name': 'aditya', 'age': 26, 'year': 2023 }).then(xyz, issues);
+
+
+
+        // learned about async function
+
+        async function suru() {
+            await yab({ 'name': 'aditya', 'age': 26, 'year': 2023 });
+            xyz();
+        }
+        suru();
+
+
+
+    </script>
+
+
 </body>
 
 </html>
