@@ -1,0 +1,43 @@
+<!-- Here we have learned about event bubbling -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="all-div">
+        <div id="div1">
+            <input type="text" placeholder="enter some text">
+            <button class="edit">edit</button>
+            <button class="delete">delete</button>
+        </div>
+        <div id="div2">
+            <input type="text" placeholder="enter some text">
+            <button class="edit">edit</button>
+            <button class="delete">delete</button>
+        </div>
+    </div>
+
+
+    <script>
+
+        document.querySelector('.all-div').addEventListener('click', () => {
+            myFunction(event);
+        });
+        function myFunction(e) {
+            console.log();
+            if (e.target.classList.contains('delete')) console.log(e.target.parentElement.id + ' delete is clicked');
+            if (e.target.classList.contains('edit')) console.log(e.target.parentElement.id + ' edit is clicked');
+        }
+    </script>
+</body>
+
+</html>
