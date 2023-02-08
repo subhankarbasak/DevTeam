@@ -1,0 +1,7 @@
+Hey, How are You?
+Fine.
+
+Get => Read
+Post => Create
+Put => update
+delete => delete
